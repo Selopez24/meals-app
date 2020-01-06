@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import MealsNavigator from "./navigation/MealsNavigator";
+import { useScreens } from "react-native-screens";
+
+useScreens();
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -16,17 +20,13 @@ export default function App() {
   if (!fontLoaded) {
     return (
       <AppLoading
-        startAsync={() => fetchFonts()}
+        startAsync={fetchFonts}
         onFinish={() => setFontLoaded(true)}
       />
     );
   }
 
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+  return <MealsNavigator />;
 }
 
 const styles = StyleSheet.create({
