@@ -15,8 +15,14 @@ const CagetoriesScreen = props => {
     return (
       <CategoryGridTile
         title={itemData.item.title}
-        id={itemData.item.id}
-        navigation={props.navigation}
+        onSelect={() => {
+          props.navigation.navigate({
+            routeName: "CategoryMeals",
+            params: {
+              categoryId: itemData.item.id
+            }
+          });
+        }}
       />
     );
   };
