@@ -10,6 +10,13 @@ import { Ionicons } from "@expo/vector-icons";
 
 import React from "react";
 
+const defaultNavigatiorOptions = {
+  headerStyle: {
+    backgroundColor: Colors.primaryColor
+  },
+  headerTintColor: "white"
+};
+
 const MealsNavigator = createStackNavigator(
   {
     Categories: {
@@ -29,12 +36,17 @@ const MealsNavigator = createStackNavigator(
     MealDetail: MealDetailScreen
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.primaryColor
-      },
-      headerTintColor: "white"
-    }
+    defaultNavigationOptions: defaultNavigatiorOptions
+  }
+);
+
+const FavoritesNavigator = createStackNavigator(
+  {
+    Favorites: FavoritesScreen,
+    MealDetail: MealDetailScreen
+  },
+  {
+    defaultNavigationOptions: defaultNavigatiorOptions
   }
 );
 
@@ -55,7 +67,7 @@ const MealsFavTabNavigator = createBottomTabNavigator(
       }
     },
     Favorites: {
-      screen: FavoritesScreen,
+      screen: FavoritesNavigator,
       navigationOptions: {
         tabBarIcon: tabInfo => {
           return (
