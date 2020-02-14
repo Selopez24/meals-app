@@ -8,6 +8,15 @@ import { useSelector } from "react-redux";
 
 const FavoritesScreen = props => {
   const favMeals = useSelector(state => state.meals.favoriteMeals);
+
+  if (favMeals.length === 0 || !favMeals) {
+    return (
+      <View style={styles.content}>
+        <Text>No Favorite meals found. Start adding some!</Text>
+      </View>
+    );
+  }
+
   return <MealList listData={favMeals} navigation={props.navigation} />;
 };
 
@@ -29,7 +38,7 @@ FavoritesScreen.navigationOptions = navData => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
+  content: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center"

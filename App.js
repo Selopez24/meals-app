@@ -3,12 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import MealsNavigator from "./navigation/MealsNavigator";
-import { useScreens } from "react-native-screens";
+import { enableScreens } from "react-native-screens";
+enableScreens();
 import { createStore, combineReducers } from "redux";
 import mealsReducer from "./store/reducers/meals";
 import { Provider } from "react-redux";
 
-useScreens();
+enableScreens();
 
 const rootReducer = combineReducers({
   meals: mealsReducer
